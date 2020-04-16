@@ -1,13 +1,8 @@
+# 文件结构
+```shell
 ├── node
 │   ├── bin
 │   ├── config
-│   │   ├── bootstrap.kubeconfig
-│   │   ├── kubelet.conf
-│   │   ├── kubelet-config.yml
-│   │   ├── kubelet.kubeconfig
-│   │   ├── kube-proxy.conf
-│   │   ├── kube-proxy.kubeconfig
-│   │   └── kube-proxy.yml
 │   ├── logs
 │   └── service
 │       ├── kubelet.service
@@ -18,13 +13,15 @@
 └── server
     ├── bin
     ├── config
-    │   ├── kube-apiserver.conf
-    │   ├── kube-controller.conf
-    │   ├── kube-scheduler.conf
-    │   └── token.csv
     ├── logs
     └── service
         ├── kube-apiserver.service
         ├── kube-controller.service
         └── kube-scheduler.service
-
+```
+# 安装步骤
+- 1、把文件夹拷贝到/opt/kubernetes/{server,node,script}
+- 2、运行script/ssl.sh 生成相关证书以及搭建etcd服务
+    + 该脚本通过ansible分发并批量执行
+- 3、讲cni拷贝至/opt/cni。实现flannel网络
+- 4、修改相关配置文件，并启动service下的服务
