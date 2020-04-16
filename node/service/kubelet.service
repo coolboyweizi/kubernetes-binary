@@ -1,0 +1,11 @@
+[Unit]
+Description=K8S KUBELETE SERVICE
+
+[Service]
+EnvironmentFile=/opt/kubernetes/node/config/kubelet.conf
+Type=simple
+ExecStart=/opt/kubernetes/node/bin/kubelet $KUBELETE_OPTS
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

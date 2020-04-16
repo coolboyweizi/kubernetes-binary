@@ -1,0 +1,11 @@
+[Unit]
+Description=K8S PROXY SERVICE
+
+[Service]
+EnvironmentFile=/opt/kubernetes/node/config/kube-proxy.conf
+Type=simple
+ExecStart=/opt/kubernetes/node/bin/kube-proxy $KUBE_PROXY_OPTS
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=K8S API SERVICE
+
+[Service]
+EnvironmentFile=/opt/kubernetes/server/config/kube-scheduler.conf
+Type=simple
+ExecStart=/opt/kubernetes/server/bin/kube-scheduler $KUBE_SCHEDULER_OPTS
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

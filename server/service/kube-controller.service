@@ -1,0 +1,11 @@
+[Unit]
+Description=K8S PROXY SERVICE
+
+[Service]
+EnvironmentFile=/opt/kubernetes/server/config/kube-controller.conf
+Type=simple
+ExecStart=/opt/kubernetes/server/bin/kube-controller-manager $KUBE_CONTROLLER_OPTS
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

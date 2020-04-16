@@ -1,0 +1,11 @@
+[Unit]
+Description=K8S API SERVICE
+
+[Service]
+EnvironmentFile=/opt/kubernetes/server/config/kube-apiserver.conf
+Type=simple
+ExecStart=/opt/kubernetes/server/bin/kube-apiserver $KUBE_API_OPTS
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
